@@ -1,0 +1,45 @@
+{
+  "name": "octaraa-assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "demo": "ts-node src/demo.ts",
+    "migrate:up": "ts-node -r dotenv/config src/db/migrate.ts up",
+    "migrate:down": "ts-node -r dotenv/config src/db/migrate.ts down",
+    "seed": "ts-node -r dotenv/config src/db/seed.ts",
+    "start": "ts-node -r dotenv/config src/server.ts",
+    "docker:up": "docker-compose up -d --wait",
+    "docker:down": "docker-compose down",
+    "docker:reset": "docker-compose down -v && docker-compose up -d --wait",
+    "setup": "npm run docker:reset && npm run migrate:up && npm run seed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.20.2",
+    "@types/node-cron": "^3.0.11",
+    "@types/pg": "^8.23.1",
+    "@types/supertest": "^7.2.1",
+    "@typescript-eslint/eslint-plugin": "^8.70.0",
+    "@typescript-eslint/parser": "^8.70.0",
+    "eslint": "^8.57.1",
+    "jest": "^30.5.1",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "node-cron": "^4.6.0",
+    "pg": "^8.23.0"
+  }
+}
